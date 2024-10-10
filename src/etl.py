@@ -18,7 +18,9 @@ def extrai_dados(dir_arquivo: str) -> pd.DataFrame:
         print(exc)
 
 
-@pa.check_output(MetricasFinanceirasOut, lazy = True)
+@pa.check_output(MetricasFinanceirasOut, lazy = True) 
+#Quando lazy estiver True ele irá listar todos os erros que estiverem no dataframe
+#Quando lazy estiver false ele sairá no primeiro erro que encontrar
 def transforma_dados(df: pd.DataFrame) -> pd.DataFrame:
     df_transformado = df.copy()
     df_transformado["valor_do_imposto"] = df_transformado["percentual_de_imposto"] * df_transformado["receita_operacional"]
